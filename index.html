@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core EC Recruitment Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #4a5568;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .link-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            margin: 20px 0;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #48bb78;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .timeline {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Core EC Recruitment Portfolio</h1>
+            <p>Smart Contract Development & Core Testnet Deployment</p>
+            <div class="badges">
+                <span class="badge">Solidity Developer</span>
+                <span class="badge">Blockchain Engineer</span>
+                <span class="badge">Core Testnet</span>
+                <span class="badge">DeFi Specialist</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Project Overview</h2>
+            <div class="project-card">
+                <h3>🎯 Project Title: [Your Project Name]</h3>
+                <p><strong>Description:</strong> Comprehensive smart contract solution deployed on Core Testnet showcasing advanced Solidity development skills and blockchain integration capabilities.</p>
+                <p><strong>Vision:</strong> Creating innovative DeFi solutions that demonstrate technical excellence and real-world applicability.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <h4>🔧 Smart Contracts</h4>
+                        <p>2-3 core functions implemented</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🌐 Core Testnet</h4>
+                        <p>Successfully deployed & verified</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📚 Documentation</h4>
+                        <p>Comprehensive README & guides</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🔍 Testing</h4>
+                        <p>Thoroughly tested & audited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛠 Technical Implementation</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h4>💻 Smart Contract</h4>
+                    <p>Solidity ^0.8.26</p>
+                    <p>Advanced contract architecture</p>
+                </div>
+                <div class="tech-item">
+                    <h4>🔗 Blockchain</h4>
+                    <p>Core Testnet (Test2)</p>
+                    <p>EVM Compatible</p>
+                </div>
+                <div class="tech-item">
+                    <h4>🔧 Development</h4>
+                    <p>Remix IDE</p>
+                    <p>MetaMask Integration</p>
+                </div>
+                <div class="tech-item">
+                    <h4>📊 Verification</h4>
+                    <p>Block Explorer</p>
+                    <p>Transaction Tracking</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🗺 Development Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1. Environment Setup</h3>
+                    <p>✅ MetaMask wallet configuration</p>
+                    <p>✅ Core Testnet network integration</p>
+                    <p>✅ Testnet tokens acquisition via faucet</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>2. Smart Contract Development</h3>
+                    <p>✅ Solidity contract architecture design</p>
+                    <p>✅ Core functions implementation</p>
+                    <p>✅ Security best practices integration</p>
+                    <div class="code-block">
+// Example Contract Structure
+pragma solidity ^0.8.26;
+
+contract YourProject {
+    // State variables
+    // Events
+    // Modifiers
+    // Core functions (2-3 implemented)
+}
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>3. Deployment & Testing</h3>
+                    <p>✅ Contract compilation in Remix IDE</p>
+                    <p>✅ Successful deployment to Core Testnet</p>
+                    <p>✅ Function testing and validation</p>
+                    <p><span class="status-indicator"></span>Contract Address: <strong>[Your Contract Address]</strong></p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>4. Documentation & Submission</h3>
+                    <p>✅ Comprehensive README creation</p>
+                    <p>✅ GitHub repository setup</p>
+                    <p>✅ Block explorer verification</p>
+                    <p>✅ Project submission completion</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔗 Project Links & Resources</h2>
+            <div class="links">
+                <a href="#" class="link-btn">📂 GitHub Repository</a>
+                <a href="#" class="link-btn">🔍 Block Explorer</a>
+                <a href="#" class="link-btn">📖 Documentation</a>
+                <a href="#" class="link-btn">🎥 Demo Video</a>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3>🔧 Development Tools Used:</h3>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Remix IDE for smart contract development</li>
+                    <li>MetaMask for wallet management</li>
+                    <li>Core Testnet for deployment</li>
+                    <li>Block Explorer for transaction verification</li>
+                    <li>GitHub for version control</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Key Achievements</h2>
+            <div class="features">
+                <div class="feature" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #2d3748;">
+                    <h4>✨ Smart Contract Excellence</h4>
+                    <p>Implemented robust, secure smart contract with multiple core functions</p>
+                </div>
+                <div class="feature" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #2d3748;">
+                    <h4>🌐 Successful Deployment</h4>
+                    <p>Successfully deployed and verified on Core Testnet</p>
+                </div>
+                <div class="feature" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color: #2d3748;">
+                    <h4>📋 Complete Documentation</h4>
+                    <p>Comprehensive project documentation and technical guides</p>
+                </div>
+                <div class="feature" style="background: linear-gradient(135deg, #fdcbf1 0%, #e6dee9 100%); color: #2d3748;">
+                    <h4>🔍 Verified Transactions</h4>
+                    <p>All transactions verified and documented on block explorer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Future Scope & Roadmap</h2>
+            <div style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white;">
+                <h3 style="margin-bottom: 15px;">🔮 Planned Enhancements:</h3>
+                <ul style="padding-left: 20px; line-height: 1.8;">
+                    <li>Integration with additional DeFi protocols</li>
+                    <li>Frontend interface development</li>
+                    <li>Mainnet deployment preparation</li>
+                    <li>Advanced security audit implementation</li>
+                    <li>Community governance features</li>
+                    <li>Cross-chain compatibility</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🏆 Core EC Recruitment Assignment - Demonstrating Excellence in Blockchain Development</p>
+            <p style="margin-top: 10px;">Connect with Core Community: <a href="https://t.me/coredevsindia" style="color: #84fab0;">Telegram</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Add click effects to buttons
+            document.querySelectorAll('.link-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = (e.clientX - e.target.offsetLeft) + 'px';
+                    ripple.style.top = (e.clientY - e.target.offsetTop) + 'px';
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
